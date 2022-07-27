@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 
-const baseContainerVaraints = {
+const containerVariants = {
   hidden: {
     opacity: 0,
     x: "100vw",
@@ -30,13 +30,25 @@ const nextVariants = {
   },
 }
 
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      yoyo: Infinity,
+      duration: 0.3,
+    },
+  },
+}
+
 const Base = ({ addBase, pizza }) => {
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"]
 
   return (
     <motion.div
       className="base container"
-      variants={baseContainerVaraints}
+      variants={containerVariants}
       initial="hidden"
       animate="visible"
       //we have applied transition to the "visible" variant
@@ -85,13 +97,7 @@ const Base = ({ addBase, pizza }) => {
           // }}
         >
           <Link to="/toppings">
-            <motion.button
-              whileHover={{
-                scale: 1.1,
-                textShadow: "0px 0px 8px rgb(255,255,255)",
-                boxShadow: "0px 0px 8px rgb(255,255,255)",
-              }}
-            >
+            <motion.button variants={buttonVariants} whileHover="hover">
               Next
             </motion.button>
           </Link>
